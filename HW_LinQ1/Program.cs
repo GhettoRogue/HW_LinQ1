@@ -1,4 +1,6 @@
-﻿var squad = new List<Soldier>
+﻿using HW_LinQ1;
+
+var squad = new List<Soldier>
 {
     new("John", "Desert Eagle", "Second lieutenant", 6),
     new("Mike", "Desert Eagle", "Second lieutenant", 6),
@@ -8,18 +10,22 @@
     new("Ethan", "Sniper riffle", "Major", 30),
 };
 
+ShowNameAndRank();
+
+return;
+
 var nameAndRank = from n in squad
     select new { n.Name, n.Rank };
 
 var nameAndLifeTime = from n in squad
     select new { n.Name, n.LifeTime };
 
-Console.ForegroundColor = ConsoleColor.Green;
-foreach (var item in squad)
-{
-    Console.WriteLine($"{item.Name} : {item.Rank}");
+void ShowNameAndRank() {
+    Console.ForegroundColor = ConsoleColor.Green;
+    foreach (var item in squad)
+    {
+        Console.WriteLine($"{item.Name} : {item.Rank}");
+    }
+    Console.ResetColor();
 }
 
-Console.ResetColor();
-
-internal record Soldier(string Name, string Weapon, string Rank, int LifeTime);
