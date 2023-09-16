@@ -14,18 +14,27 @@ ShowNameAndRank();
 
 return;
 
-var nameAndRank = from n in squad
-    select new { n.Name, n.Rank };
 
 var nameAndLifeTime = from n in squad
     select new { n.Name, n.LifeTime };
 
-void ShowNameAndRank() {
+IEnumerable<Soldier> NameAndRank(string name, string rank)
+{
+    var nameAndRank =
+        from s in squad
+        where s.Name == name && s.Rank == rank
+        select s;
+
+    return nameAndRank;
+}
+
+void ShowNameAndRank()
+{
     Console.ForegroundColor = ConsoleColor.Green;
     foreach (var item in squad)
     {
         Console.WriteLine($"{item.Name} : {item.Rank}");
     }
+
     Console.ResetColor();
 }
-
