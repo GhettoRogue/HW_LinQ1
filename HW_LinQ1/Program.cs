@@ -11,6 +11,9 @@
 var nameAndRank = from n in squad
     select new { n.Name, n.Rank };
 
+var nameAndLifeTime = from n in squad
+    select new { n.Name, n.LifeTime };
+
 Console.ForegroundColor = ConsoleColor.Green;
 foreach (var item in squad)
 {
@@ -19,4 +22,4 @@ foreach (var item in squad)
 
 Console.ResetColor();
 
-internal record class Soldier(string Name, string Weapon, string Rank, int LifeTime);
+internal record Soldier(string Name, string Weapon, string Rank, int LifeTime);
