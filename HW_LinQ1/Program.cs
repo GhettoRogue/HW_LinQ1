@@ -18,10 +18,10 @@ return;
 var nameAndLifeTime = from n in squad
     select new { n.Name, n.LifeTime };
 
-IEnumerable<Soldier> NameAndRank(string name, string rank)
+IEnumerable<Soldier> NameAndRank(IEnumerable<Soldier> soldier, string name, string rank)
 {
     var nameAndRank =
-        from s in squad
+        from s in soldier
         where s.Name == name && s.Rank == rank
         select s;
 
@@ -30,7 +30,9 @@ IEnumerable<Soldier> NameAndRank(string name, string rank)
 
 void ShowNameAndRank()
 {
+    Console.WriteLine("List names and ranks of soldiers in squad: ");
     Console.ForegroundColor = ConsoleColor.Green;
+    var nameAndRank = NameAndRank(squad, name, rank);
     foreach (var item in squad)
     {
         Console.WriteLine($"{item.Name} : {item.Rank}");
