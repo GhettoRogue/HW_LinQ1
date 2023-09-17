@@ -42,11 +42,13 @@ void ShowLifeTime()
 void ShowNameAndRank()
 {
     Console.WriteLine("List names and ranks of soldiers in squad: ");
-
+    Console.ForegroundColor = ConsoleColor.Green;
     foreach (var soldier in squad!)
     {
         Console.WriteLine($"{soldier.Name} - {soldier.Rank}");
-    } 
+    }
+
+    Console.ResetColor();
 }
 
 /*IEnumerable<Soldier> NameAndRank(string name, string rank)
