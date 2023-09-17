@@ -32,8 +32,7 @@ void ShowLifeTime()
     var lifeTime = LifeTime();
     foreach (var s in lifeTime!)
     {
-        Console.WriteLine($"Lifetime: {s.LifeTime} " +
-                          $"Rank: {s.Rank}");
+        Console.WriteLine($"Lifetime: {s.LifeTime} - Rank: {s.Rank}");
     }
 
     Console.ResetColor();
