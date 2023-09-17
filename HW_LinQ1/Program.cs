@@ -40,9 +40,9 @@ void ShowLifeTime()
 IEnumerable<Soldier> NameAndRank()
 {
     var nameAndRank = from s in squad
-        select $"{s.Name} ({s.Rank})";
+          where  s.Name.Contains("Mark")
+              select s;
     return nameAndRank;
-
 }
 
 void ShowNameAndRank()
