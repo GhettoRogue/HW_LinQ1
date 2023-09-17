@@ -12,6 +12,8 @@ var squad = new List<Soldier>
 
 ShowLifeTime();
 
+ShowNameAndRank();
+
 return;
 
 IEnumerable<Soldier> LifeTime()
@@ -37,23 +39,33 @@ void ShowLifeTime()
     Console.ResetColor();
 }
 
-IEnumerable<Soldier> NameAndRank()
-{
-    var nameAndRank = from s in squad
-          where  s.Name.Contains("Mark")
-              select s;
-    return nameAndRank;
-}
-
 void ShowNameAndRank()
 {
     Console.WriteLine("List names and ranks of soldiers in squad: ");
+
+    foreach (var soldier in squad!)
+    {
+        Console.WriteLine($"{soldier.Name} - {soldier.Rank}");
+    } 
+}
+
+/*IEnumerable<Soldier> NameAndRank(string name, string rank)
+{
+    var nameAndRank = from s in squad
+        where s.Name == name && s.Rank == rank
+        select s;
+    return nameAndRank;
+}
+
+void ShowNameAndRank(string name, string rank)
+{
+    Console.WriteLine("List names and ranks of soldiers in squad: ");
     Console.ForegroundColor = ConsoleColor.Green;
-    var nameAndRank = NameAndRank();
+    var nameAndRank = NameAndRank(name, rank);
     foreach (var s in nameAndRank!)
     {
         Console.WriteLine($"{s.Name} : {s.Rank}");
     }
 
     Console.ResetColor();
-}
+}*/
