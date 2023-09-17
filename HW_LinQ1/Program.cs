@@ -10,6 +10,7 @@ var squad = new List<Soldier>
     new("Ethan", "Sniper riffle", "Major", 30),
 };
 
+NameAndRank();
 
 return;
 
@@ -17,9 +18,17 @@ return;
 var nameAndLifeTime = from n in squad
     select new { n.Name, n.LifeTime };
 
-void NameAndRank()
+IEnumerable<Soldier> LifeTime()
 {
-    var nameAndRank = from s in soldier
+    var nameAndRank = from s in squad
+        where s.LifeTime <= 6
+        select s;
+    return nameAndRank;
+}
+
+IEnumerable<Soldier> NameAndRank()
+{
+    var nameAndRank = from s in squad;
 }
 
 void ShowNameAndRank()
@@ -27,9 +36,9 @@ void ShowNameAndRank()
     Console.WriteLine("List names and ranks of soldiers in squad: ");
     Console.ForegroundColor = ConsoleColor.Green;
     var nameAndRank = NameAndRank();
-    foreach (var item in squad)
+    foreach (var s in nameAndRank!)
     {
-        Console.WriteLine($"{item.Name} : {item.Rank}");
+        Console.WriteLine($"{s.Name} : {s.Rank}");
     }
 
     Console.ResetColor();
