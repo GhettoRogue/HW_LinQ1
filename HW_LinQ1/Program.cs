@@ -14,10 +14,6 @@ ShowLifeTime();
 
 return;
 
-
-var nameAndLifeTime = from n in squad
-    select new { n.Name, n.LifeTime };
-
 IEnumerable<Soldier> LifeTime()
 {
     var lifeTime = from s in squad
@@ -41,9 +37,12 @@ void ShowLifeTime()
     Console.ResetColor();
 }
 
-/*IEnumerable<Soldier> NameAndRank()
+IEnumerable<Soldier> NameAndRank()
 {
-    var nameAndRank = from s in squad;
+    var nameAndRank = from s in squad
+        select $"{s.Name} ({s.Rank})";
+    return nameAndRank;
+
 }
 
 void ShowNameAndRank()
@@ -57,4 +56,4 @@ void ShowNameAndRank()
     }
 
     Console.ResetColor();
-}*/
+}
