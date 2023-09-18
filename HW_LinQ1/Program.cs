@@ -23,7 +23,10 @@ IEnumerable<Soldier> LifeTime()
         where s.Rank == "Second lieutenant"
         select s;
     return lifeTime;
+    
 }
+
+#region ShowInfo
 
 void ShowLifeTime()
 {
@@ -49,6 +52,9 @@ void ShowNameAndRank()
 
     Console.ResetColor();
 }
+
+#endregion
+
 
 /*IEnumerable<Soldier> NameAndRank(string name, string rank)
 {
